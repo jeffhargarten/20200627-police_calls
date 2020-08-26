@@ -1,0 +1,182 @@
+/**
+ * Main style file for project.
+ * Uses SASS, specifically the SCSS syntax
+ * http://sass-lang.com/
+ */
+
+
+// Include strib-icons
+$strib-fonts-location: '//static.startribune.com/assets/libs/strib-icons/0.0.10/';
+@import '@striblab/strib-icons/build/strib-icons.scss';
+
+
+// Environment noting
+@import "shared/_environment";
+
+// Strib styles
+// https://github.com/striblab/strib-styles/blob/master/source/styles/_variables.scss
+
+// Assumed that this project lives within an existing page, so we add a
+// wrapper that is very specific and wrap our other styles in it so
+// that we don't affect other styles on the page.  Note that
+// this increases the CSS size, and it means strib-styles won't use
+// rems when it would otherwise.
+$selector-wrapper: '.strib-styles.ssa.ssb.ssc';
+@import '@striblab/strib-styles/source/styles/default-wrapper.scss';
+
+// Project specific styles.  Split styles into files per component
+#{$selector-wrapper} {
+  // Split your styles into multiple files so its easier to understand and change
+  @import 'shared/_project';
+}
+
+#calendar {
+  font-size:0.8em;
+  table-layout:fixed !important;
+}
+
+.row {
+  display:table-row;
+  table-layout:fixed !important;
+}
+
+.type {
+  font-weight:900;
+  white-space:nowrap;
+  width:150px !important;
+}
+
+.th {
+  text-align:right;
+  font-weight:900;
+  max-width:70px !important;
+}
+
+.stat {
+  text-align:right;
+  max-width:70px !important;
+}
+
+.block {
+  display:table-cell !important;
+  font-size:0.8em;
+  padding:2px;
+}
+
+.num {
+  font-weight:bold;
+  display:none;
+  max-width:40px !important;
+  min-width:40px !important;
+  margin-left:auto;
+  margin-right:0;
+  overflow: hidden;
+  
+}
+
+.arrow {
+  font-weight:bold;
+  max-width:40px !important;
+  min-width:40px !important;
+  margin-left:auto;
+  margin-right:0;
+  overflow: hidden;
+}
+
+.topline { 
+  padding:7px;
+  font-size:1em;
+}
+
+.center {
+  margin-top:15px;
+  margin-bottom:15px;
+}
+
+.legend {
+  font-size:0.6em;
+}
+
+#mainlegend {
+  font-size:0.8em;
+}
+
+.legend div {
+  height:17px;
+  width:9.09%;
+  text-align:center;
+  font-size:1.2em;
+  display:inline-block;
+}
+
+    .white {
+      background-color:#ffffff;
+    }
+    .null {
+      fill: rgba(255, 245, 240, 1);
+      background-color: rgba(255, 245, 240, 1);
+    }
+
+    /*BLUE SHADED RAMP*/
+    .blue1 {
+      fill: #CAE5FD;
+      background-color: #CAE5FD;
+    }
+    
+    .blue2 {
+      fill: #95CAF9;
+      background-color: #95CAF9;
+    }
+    
+    .blue3 {
+      fill: #6BB3F4;
+      background-color: #6BB3F4;
+    }
+    
+    .blue4 {
+      fill: #469EEC;
+      background-color: #469EEC;
+    }
+    
+    .blue5 {
+      fill: #2284DC;
+      color:#ffffff;
+      background-color: #2284DC;
+    }
+
+     /*ORANGE SHADED RAMP*/
+     .orange1 {
+      fill: #F2E0C7;
+      background-color: #F2E0C7;
+    }
+    
+    .orange2 {
+      fill: #F2C9AC;
+      background-color: #F2C9AC;
+    }
+    
+    .orange3 {
+      fill: #DEA381;
+      background-color: #DEA381;
+    }
+    
+    .orange4 {
+      fill: #C28059;
+      background-color: #C28059;
+    }
+    
+    .orange5 {
+      fill: #8F4B31;
+      color:#ffffff;
+      background-color: #8F4B31;
+    }
+
+@media (max-width:600px) {
+  #calendar {
+    pointer-events:none;
+  }
+  .arrow, .num {
+    max-width:100% !important;
+    min-width:100% !important;
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "about this file": "This document defines configuration for this project that is not content or copy.",
+  "projectIdentifier": "20200627-police_calls",
+
+  "cms": {
+    "defaultArticleContentTemplateRewriteClass": "article-lcd-body-content",
+    "pages": [
+      
+      {
+        "id": "index",
+        "articleId": "NEEDS-ARTICLE-ID",
+        "lcd": "NEEDS-LCD-ID",
+        "default": true
+      }
+      
+    ]
+  },
+
+
+  "styles": {
+    "globals": [
+    ]
+  },
+  "js": {
+    "globals": [
+      "https://cdn.polyfill.io/v2/polyfill.min.js"
+    ]
+  },
+  "publishToken": "128bffbd3d8b97da78a54e1de7642812",
+  "publish": {
+    "default": {
+      "bucket": "static.startribune.com",
+      "path": "news/projects-staging/all/20200627-police_calls",
+      "url": "http://static.startribune.com/news/projects-staging/all/20200627-police_calls/",
+      "cacheSeconds": 30
+    },
+    "testing": {
+      "bucket": "stribtest-bucket",
+      "path": "news/projects/20200627-police_calls",
+      "url": "https://s3.amazonaws.com/stribtest-bucket/news/projects/20200627-police_calls/",
+      "cacheSeconds": 30
+    },
+    "production": {
+      "bucket": "static.startribune.com",
+      "path": "news/projects/all/20200627-police_calls",
+      "url": "http://static.startribune.com/news/projects/all/20200627-police_calls/",
+      "cacheSeconds": 600
+    }
+  }
+}
