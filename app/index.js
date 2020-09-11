@@ -93,31 +93,34 @@ import shifts from '../sources/shift.json';
 
 var data = shifts.shifts;
 
-var color_scale = d3.scaleLinear().domain([-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1]).range(['#B9682F', '#DA8D56', '#ffb988', '#FFD0AE', '#FFE6D3', '#ffffff', '#CAE5FD', '#95CAF9', '#6BB3F4', '#469EEC', '#2284DC']);
+var color_scale = d3.scaleLinear().domain([-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1]).range(['#2284DC', '#469EEC', '#6BB3F4', '#95CAF9', '#CAE5FD', '#ffffff', '#FFE6D3', '#FFD0AE', '#ffb988', '#DA8D56', '#B9682F']);
 
 function text_scale(val) {
-  if ((val >= 0.5) ||  (val <= -0.5) || (val == 0)) { return "#ffffff"; }
+  if ((val >= 0.5) ||  (val <= -0.5)) { return "#ffffff"; }
   else return "#000000";
 }
 
 d3.select("#calendar").selectAll(".row")
 .data(data)
 .enter().append("div")
-.attr("class", "row")
+.attr("class", function(d) { return "row" })
+//.attr("class", function(d) { return "row " + d.show; })
 .html(function(d) {
   var topline = "type";
+  var blocked = "";
   if (d.break == 1) {
     topline = "topline";
+    blocked = "blocked";
   } 
   return "<div class='" + topline + " block'>" + d.month + "</div> \
-      <div class='block stat' style='background-color:" + color_scale(d.Jan) + "; color:" + text_scale(d.Jan) + "'><div class='arrow'>" + d.JanArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Jan) + "</div></div> \
-      <div class='block stat' style='background-color:" + color_scale(d.Feb) + "; color:" + text_scale(d.Feb) + "'><div class='arrow'>" + d.FebArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Feb) + "</div></div> \
-      <div class='block stat' style='background-color:" + color_scale(d.Mar) + "; color:" + text_scale(d.Mar) + "'><div class='arrow'>" + d.MarArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Mar) + "</div></div> \
-      <div class='block stat' style='background-color:" + color_scale(d.Apr) + "; color:" + text_scale(d.Apr) + "'><div class='arrow'>" + d.AprArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Apr) + "</div></div> \
-      <div class='block stat' style='background-color:" + color_scale(d.May) + "; color:" + text_scale(d.May) + "'><div class='arrow'>" + d.MayArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.May) + "</div></div> \
-      <div class='block stat' style='background-color:" + color_scale(d.Jun) + "; color:" + text_scale(d.Jun) + "'><div class='arrow'>" + d.JunArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Jun) + "</div></div> \
-      <div class='block stat' style='background-color:" + color_scale(d.Jul) + "; color:" + text_scale(d.Jul) + "'><div class='arrow'>" + d.JulArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Jul) + "</div></div> \
-      <div class='block stat' style='background-color:" + color_scale(d.Aug) + "; color:" + text_scale(d.Aug) + "'><div class='arrow'>" + d.AugArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Aug) + "</div></div>"
+      <div class='block stat " + blocked + "' style='background-color:" + color_scale(d.Jan) + "; color:" + text_scale(d.Jan) + "'><div class='arrow'>" + d.JanArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Jan) + "</div></div> \
+      <div class='block stat " + blocked + "' style='background-color:" + color_scale(d.Feb) + "; color:" + text_scale(d.Feb) + "'><div class='arrow'>" + d.FebArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Feb) + "</div></div> \
+      <div class='block stat " + blocked + "' style='background-color:" + color_scale(d.Mar) + "; color:" + text_scale(d.Mar) + "'><div class='arrow'>" + d.MarArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Mar) + "</div></div> \
+      <div class='block stat " + blocked + "' style='background-color:" + color_scale(d.Apr) + "; color:" + text_scale(d.Apr) + "'><div class='arrow'>" + d.AprArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Apr) + "</div></div> \
+      <div class='block stat " + blocked + "' style='background-color:" + color_scale(d.May) + "; color:" + text_scale(d.May) + "'><div class='arrow'>" + d.MayArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.May) + "</div></div> \
+      <div class='block stat bordered " + blocked + "' style='background-color:" + color_scale(d.Jun) + "; color:" + text_scale(d.Jun) + "'><div class='arrow'>" + d.JunArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Jun) + "</div></div> \
+      <div class='block stat " + blocked + "' style='background-color:" + color_scale(d.Jul) + "; color:" + text_scale(d.Jul) + "'><div class='arrow'>" + d.JulArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Jul) + "</div></div> \
+      <div class='block stat " + blocked + "' style='background-color:" + color_scale(d.Aug) + "; color:" + text_scale(d.Aug) + "'><div class='arrow'>" + d.AugArrow + "</div><div class='num'>" + d3.format("+0.0%")(d.Aug) + "</div></div>"
 });
 
 $(".stat").on("mouseover", function() {
@@ -129,5 +132,21 @@ $(".stat").on("mouseout", function() {
   $(this).find(".arrow").toggle();
   $(this).find(".num").toggle();
 });
+
+// $(".hide").hide();
+// $(".hide2").hide();
+
+$("#showToggle").on("click", function() {
+  $(".hide").toggle();
+  $("#less").toggle();
+  $("#more").toggle();
+});
+
+$("#showToggle2").on("click", function() {
+  $(".hide2").toggle();
+  $("#less2").toggle();
+  $("#more2").toggle();
+});
+
 
 !function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();

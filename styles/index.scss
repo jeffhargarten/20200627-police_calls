@@ -41,13 +41,12 @@ $selector-wrapper: '.strib-styles.ssa.ssb.ssc';
 }
 
 .type {
-  font-weight:900;
   white-space:nowrap;
   width:150px !important;
 }
 
 .th {
-  text-align:right;
+  text-align:center;
   font-weight:900;
   max-width:70px !important;
 }
@@ -59,33 +58,85 @@ $selector-wrapper: '.strib-styles.ssa.ssb.ssc';
 
 .block {
   display:table-cell !important;
-  font-size:0.8em;
-  padding:2px;
+  font-size:0.85em;
+  padding:3px;
+}
+
+.block:hover {
+  cursor:default;
+}
+
+.bordered {
+  border-left:5px solid #000000;
 }
 
 .num {
-  font-weight:bold;
-  display:none;
-  max-width:40px !important;
-  min-width:40px !important;
-  margin-left:auto;
-  margin-right:0;
+  font-weight: normal;
+  display: none;
+  margin-left: auto;
+  margin-right: -1px;
+  font-size: .9em;
+  padding-right: 0px;
   overflow: hidden;
-  
+  max-width: 40px !important;
+  min-width: 40px !important;
+}
+
+.datalabel {
+  font-size:12px !important;
 }
 
 .arrow {
   font-weight:bold;
   max-width:40px !important;
   min-width:40px !important;
-  margin-left:auto;
-  margin-right:0;
   overflow: hidden;
 }
 
 .topline { 
-  padding:7px;
+  padding:20px 0 5px 2px;
+  font-weight:bold;
   font-size:1em;
+}
+
+.blocked:hover, .blocked { 
+  pointer-events:none !important;
+}
+
+.blocked .arrow {
+  color:#ffffff !important;
+}
+
+.hide, .hide2 {
+  display:none;
+}
+
+#showToggle, #showToggle2 {
+    color: #aaa !important;
+    text-align: center;
+    padding: 15px;
+    display:none;
+}
+
+#showToggle:hover, #showToggle2:hover {
+  color: #333 !important;
+  cursor: pointer;
+}
+
+#less, #less2 {
+  display:none;
+}
+
+.notes-block {
+  font-family: "Benton Sans", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  font-style: italic;
+  text-decoration: none;
+  color: #656565;
+  position: relative;
+  margin-bottom: 3px;
+  margin-top:20px;
 }
 
 .center {
@@ -111,6 +162,8 @@ $selector-wrapper: '.strib-styles.ssa.ssb.ssc';
 
     .white {
       background-color:#ffffff;
+      font-size:12px;
+      color:#aaaaaa;
     }
     .null {
       fill: rgba(255, 245, 240, 1);
